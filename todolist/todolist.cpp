@@ -2,6 +2,8 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <fstream>
+
 using namespace std;
 
 int main()
@@ -23,11 +25,25 @@ int main()
 		}
 	}
 
-	// print out item
+	// print out item and write to external file.
 	cout << "Todo list for today:" << endl;
+	
+	
+	ofstream todoFile;
+
+	todoFile.open("todo.txt");	
 
 	for (string item : todoList) {
 		cout << item << endl;
+
+		if(todoFile.is_open())
+		{
+			todoFile << item ;
+			todoFile << "\n";	
+		}	
 	}
+	todoFile.close();
+
 	return 0;
+
 }
