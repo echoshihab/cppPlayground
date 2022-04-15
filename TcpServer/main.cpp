@@ -50,7 +50,7 @@ void main()
 	}
 
 	char host[NI_MAXHOST]; //client's remote name
-	char service[NI_MAXHOST]; // service (i.e. port_ the client is connecting on
+	char service[NI_MAXHOST]; // service (i.e. port_ the client is connecting on)
 
 	ZeroMemory(host, NI_MAXHOST);
 	ZeroMemory(service, NI_MAXHOST);
@@ -68,13 +68,38 @@ void main()
 	
 
 	// Close listening socket
+	closesocket(listeningSocket);
 
 	// loop through accept and echo message back to client
+	char buf[4096];
+
+	while(true)
+	{
+		ZeroMemory(buf, 4096);
+
+		//wait for client to send data
+		int bytesReceived = recv(clientSocket, buf, 4096, 0);
+		if(bytesReceived == SOCKET_ERROR)
+		{
+			std::cerr << "Error in recv(). Quitting \n";
+			break;
+		}
+		if (bytesReceived == 0)
+		{
+			std::cout << "Client disconnected \n";
+			break;
+		}
+
+		// Echo message back to client
+		send(clientSocket, buf, bytesReceived + 1, 0);
+		//echo message back to client
+	}
 	
 	// Close the socket
-	
-	// Shutdown winsock
+	closesocket(clientSocket);
 
+	// cleanup winsock
+	WSACleanup();
 
 
 }
