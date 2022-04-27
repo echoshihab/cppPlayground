@@ -22,7 +22,19 @@ void main()
 	}
 
 	//Create Socket
+	SOCKET sock = socket(AF_INET,SOCK_STREAM, 0);
+	if (sock == INVALID_SOCKET)
+	{
+		std::cerr << "Can't create socket, Error#" << WSAGetLastError() << '\n';
+	}
+
 	//fill in hint structure
+	sockaddr_in hint;
+	hint.sin_family = AF_INET;
+	hint.sin_port = htons(port);
+	inet_pton(AF_INET, ipAddress.c_str(), &hint.sin_addr)
+
+	 
 	// connect to server
 	// loop to send receive data
 	// gracefully shutdown
