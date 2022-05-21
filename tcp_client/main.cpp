@@ -32,10 +32,32 @@ void main()
 	sockaddr_in hint;
 	hint.sin_family = AF_INET;
 	hint.sin_port = htons(port);
-	inet_pton(AF_INET, ipAddress.c_str(), &hint.sin_addr)
+	inet_pton(AF_INET, ipAddress.c_str(), &hint.sin_addr);
 
-	 
+
 	// connect to server
-	// loop to send receive data
+	int connResult = connect(sock, (sockaddr*)&hint, sizeof(hint));
+	if (connResult == SOCKET_ERROR)
+	{
+		std::cerr << "Can't connect to server, Err#" << WSAGetLastError() << '\n';
+		closesocket(sock);
+		WSACleanup();
+		return;
+	}
+
+
+	// loop to send receive data.
+	char buffer[4096];
+	std::string userInput;
+
+	do {
+		// Prompt the user for some text
+		// Send the text
+		// Wait for resposne
+		// Echo response to console
+
+	} while (userInput.size() > 0)
+
+
 	// gracefully shutdown
 }
