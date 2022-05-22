@@ -52,12 +52,33 @@ void main()
 
 	do {
 		// Prompt the user for some text
-		// Send the text
-		// Wait for resposne
-		// Echo response to console
+		std::cout << "> ";
+		std::getline(std::cin, userInput);
+		
+		if (userInput.size() > 0) //to ensure something was typed
+		{
+			// Send the text
+			int sendResult = send(sock, userInput.c_str(), userInput.size() + 1, 0);
+			if (sendResult != SOCKET_ERROR)
+			{
+				//wait for response
+				ZeroMemory(buffer, 4096);
+				int bytesReceived = recv(sock, buffer, 4096, 0);
 
-	} while (userInput.size() > 0)
+				if (bytesReceived > 0)
+				{
+					// Echo response to console
+					std::cout << "SERVER " << std::string(buffer, 0, bytesReceived) << '\n';
+				}
+			}
+			//wait for response
+			//echo response to console
+		}
 
-
+	} while (userInput.size() > 0);
+		
+	
 	// gracefully shutdown
+	closesocket(sock);
+	WSACleanup();
 }
