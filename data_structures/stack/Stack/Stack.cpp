@@ -1,16 +1,9 @@
-// Stack.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
 
 #include <iostream>
-#include <algorithm>
-using namespace std;
 
-int main()
+class DynamicArrayStack
 {
-	std::cout << "Hello World!\n";
-}
 
-class DynamicArrayStack {
 private:
 	int sizeOfArray{ 4 };
 	int totalElements{ 0 };
@@ -18,10 +11,9 @@ private:
 
 public:
 	void increaseArrayCapacity() {
-		sizeOfArray *= 2;
-		int* tempArray = new int[sizeOfArray] {};
+		int* tempArray = new int[sizeOfArray*2] {};
 		//copy all elements of current array to new temp array
-		std::copy(dynamicArr[0], dynamicArr[sizeOfArray], tempArray);
+		std::copy(dynamicArr, dynamicArr+sizeOfArray, tempArray);
 		// delete existing array
 		delete[] dynamicArr;
 		// set existing array to the temp array
@@ -30,50 +22,55 @@ public:
 		delete[] tempArray;
 	}
 	void push(int val) {
-		if (totalElements < sizeOfArray) 
+		if (totalElements < sizeOfArray)
 		{
 			dynamicArr[totalElements + 1] = val;
+			totalElements += 1;
 		}
-		else 
+		else
 		{
-			std::cout << "Can't push any more elements to stack";
+			std::cout << "Can't push any more elements to stack" << '\n';
 		}
-
 	}
+
 	int pop() {
-		if (totalElements > 0) {
-			return dynamicArr[totalElements];
+		if (totalElements > 0)
+		{
+			int currentNumOfElements = totalElements;
+			totalElements -= 1;
+			return dynamicArr[currentNumOfElements];
+
+		}
+		else
+		{
+			std::cout << "Can't pop any more elements from stack";
 		}
 	}
+
 	void printStack() {
-		for (int i = 0; i++; i < sizeOfArray) {
-			cout << dynamicArr[i];
+		std::cout << "Current Stack: ";
+		for (int i = 0; i < totalElements; i++) {
+			std::cout << dynamicArr[i] << '\n';
 		}
 	}
-	
-
-
-	//create an array
-	// 
-	//implement push
-	// implement pop
-	//implment isEmpty
-	// implment Peek
-
-	//double the array size
-
-	//check when to double the array size
 
 };
 
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
+int main()
+{
+	std::cout << "Hello";
 
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+	DynamicArrayStack d;
+
+	d.push(5);
+	d.push(4);
+	d.push(1);
+
+	std::cout << "Item Popped: " << d.pop() << '\n';
+	std::cout << "Item Popped: " << d.pop() << '\n';
+	std::cout << "Item Popped: " << d.pop() << '\n';
+	d.printStack();
+	return 0;
+}
+ 

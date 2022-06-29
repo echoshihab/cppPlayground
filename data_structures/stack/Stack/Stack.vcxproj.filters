@@ -18,13 +18,5 @@
     <ClCompile Include="Stack.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DynamicArrayStack.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="DynamicArrayStack.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>
