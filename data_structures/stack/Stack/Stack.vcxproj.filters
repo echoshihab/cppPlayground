@@ -21,9 +21,15 @@
     <ClCompile Include="VectorStack.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DynamicArrayStack.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VectorStack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DynamicArrayStack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -139,10 +139,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DynamicArrayStack.cpp" />
     <ClCompile Include="Stack.cpp" />
     <ClCompile Include="VectorStack.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DynamicArrayStack.h" />
     <ClInclude Include="VectorStack.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

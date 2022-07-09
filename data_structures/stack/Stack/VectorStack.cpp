@@ -1,5 +1,4 @@
 #include <iostream>
-#include <vector>
 #include <string>
 #include "VectorStack.h";
 
@@ -14,7 +13,6 @@
 		peek();
 	}
 
-
 	void VectorStack::pop() {
 
 		if (totalElements > 0)
@@ -24,13 +22,11 @@
 			std::cout << "Item being Popped: " << dynamicArr[indexOfItemToBeRemoved] << '\n';
 			peek();
 			dynamicArr.pop_back();
-
 		}
 		else
 		{
 			std::cout << "Can't pop any more elements from stack" << '\n';
 		}
-
 	}
 
 	void VectorStack::peek() {
