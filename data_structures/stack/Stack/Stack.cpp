@@ -1,7 +1,7 @@
 
 #include <iostream>
 #include <string>
-#include <vector>
+#include "VectorStack.h";
 
 class DynamicArrayStack
 {
@@ -76,55 +76,7 @@ public:
 
 };
 
-class VectorStack {
-private:
-	int sizeOfArray{ 4 };
-	int totalElements{ 0 };
-	std::vector<int> dynamicArr;
 
-public:
-
-	void push(int val) {
-		std::cout << "Pushing " << std::to_string(val) << " into stack" << '\n';
-		if (totalElements <= sizeOfArray + 1)
-		{
-			dynamicArr.push_back(val);
-			totalElements += 1;
-		}
-		peek();
-	}
-
-
-	void pop() {
-
-		if (totalElements > 0)
-		{
-			int indexOfItemToBeRemoved = totalElements - 1;
-			totalElements -= 1;
-			std::cout << "Item being Popped: " << dynamicArr[indexOfItemToBeRemoved] << '\n';
-			peek();
-			dynamicArr.pop_back();
-
-		}
-		else
-		{
-			std::cout << "Can't pop any more elements from stack" << '\n';
-		}
-
-	}
-
-	void peek() {
-		int indexOfTopItem = totalElements - 1;
-		std::cout << "top item is " << std::to_string(dynamicArr[indexOfTopItem]) << '\n';
-	}
-
-	void printStack() {
-		std::cout << "Current Stack: " << '\n';
-		for (int i = 0; i < totalElements; i++) {
-			std::cout << dynamicArr[i] << '\n';
-		}
-	}
-};
 int main()
 {
 	DynamicArrayStack d;
