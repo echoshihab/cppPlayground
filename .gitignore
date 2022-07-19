@@ -1,8 +1,11 @@
+
+
 */executables/*
 *.exe
 
 # Prerequisites
 *.d
+SDL2.dll
 
 # Compiled Object files
 *.slo
