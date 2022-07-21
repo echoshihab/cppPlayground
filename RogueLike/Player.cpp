@@ -15,7 +15,7 @@ void Player::init(int level, int health, int attack, int defense, int experience
 	_health = health;
 	_attack = attack;
 	_defense = defense;
-	_experience = experience
+	_experience = experience;
 	
 }
 
