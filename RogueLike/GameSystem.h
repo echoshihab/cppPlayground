@@ -9,6 +9,7 @@ public:
 	GameSystem(std::string levelFile);
 
 	void playGame();
+	void playerMove();
 
 private:
 	Player _player;
