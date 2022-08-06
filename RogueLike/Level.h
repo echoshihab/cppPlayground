@@ -2,12 +2,13 @@
 #include <vector>
 #include <string>
 #include "Player.h"
+#include "Enemy.h"
 
 class Level
 {
 public: 
 	Level();
-	void load(std::string fileName, Player &player);
+	void load(std::string fileName, Player &player, std::vector<Enemy> &enemies);
 	void print();
 
 	void movePlayer(char input, Player &player);
