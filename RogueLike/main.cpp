@@ -8,6 +8,6 @@
 int main()
 {
 	GameSystem gameSystem("level1.txt");
-
+	gameSystem.playGame();
 	return 0;
 }

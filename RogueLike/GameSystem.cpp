@@ -25,7 +25,7 @@ void GameSystem::playGame()
 
 void GameSystem::playerMove() {
 	char input;
-	std::cout << "Enter a move command (w/s/a/d): ";
+	printf("Enter a move command (w/s/a/d): ");
 	input = _getch();
 
 	_level.movePlayer(input, _player);
