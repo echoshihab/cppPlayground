@@ -10,7 +10,7 @@ Level::Level()
 
 }
 
-void Level::load(std::string fileName, Player& player, std::vector<Enemy>& enemies)
+void Level::load(std::string fileName, Player& player)
 {
 	std::ifstream file;
 	file.open(fileName);
@@ -39,19 +39,19 @@ void Level::load(std::string fileName, Player& player, std::vector<Enemy>& enemi
 				player.setPosition(j, i);
 				break;
 			case 'S':
-				enemies.push_back(Enemy("Snake", tile, 1, 3, 1, 10, 10));
+				_enemies.push_back(Enemy("Snake", tile, 1, 3, 1, 10, 10));
 				break;
 			case 'g':
-				enemies.push_back(Enemy("Goblin", tile, 2, 10, 5, 35, 50));
+				_enemies.push_back(Enemy("Goblin", tile, 2, 10, 5, 35, 50));
 				break;
 			case 'O':
-				enemies.push_back(Enemy("Orgre", tile, 4, 20, 20, 200, 500));
+				_enemies.push_back(Enemy("Orgre", tile, 4, 20, 20, 200, 500));
 				break;
 			case 'D':
-				enemies.push_back(Enemy("Dragon", tile, 100, 2000, 2000, 2000, 500000));
+				_enemies.push_back(Enemy("Dragon", tile, 100, 2000, 2000, 2000, 500000));
 				break;
 			case 'B':
-				enemies.push_back(Enemy("Bandit", tile, 3, 15, 10, 100, 250));
+				_enemies.push_back(Enemy("Bandit", tile, 3, 15, 10, 100, 250));
 				break;
 
 
@@ -112,9 +112,28 @@ void Level::processPlayerMove(Player& player, int targetX, int targetY)
 
 	char moveTile = getTile(targetX, targetY);
 
-	 if (moveTile == '.') {
+	if (moveTile == '.') {
 		player.setPosition(targetX, targetY);
 		setTile(playerX, playerY, '.');
 		setTile(targetX, targetY, '@');
+	}
+	 else if (moveTile != '#') {
+		 battleMonster(player, targetX, targetY);
+	}
+}
+
+void Level::battleMonster(Player& player, int targetX, int targetY)
+{
+	int enemyX;
+	int enemyY;
+	for (int i = 0; i < _enemies.size(); i++) {
+		_enemies[i].getPosition(enemyX, enemyY);
+
+		if (targetX == enemyX && targetY == enemyY) {
+			//battle
+
+			return;
+					
+		} 
 	}
 }

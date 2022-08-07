@@ -8,7 +8,7 @@ class Level
 {
 public: 
 	Level();
-	void load(std::string fileName, Player &player, std::vector<Enemy> &enemies);
+	void load(std::string fileName, Player &player);
 	void print();
 
 	void movePlayer(char input, Player &player);
@@ -21,8 +21,11 @@ public:
 
 private:
 	void processPlayerMove(Player& player, int targetX, int targetY);
+	void battleMonster(Player& player, int targetX, int targetY);
 	
 private:
+	std::vector<Enemy> _enemies;
 	std::vector<std::string> _levelData;
+
 };
 

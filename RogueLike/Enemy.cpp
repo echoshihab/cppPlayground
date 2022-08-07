@@ -12,3 +12,17 @@ Enemy::Enemy(std::string name, char tile, int level, int attack, int defense, in
 	_experienceValue = xp;
 
 }
+
+//sets position of Enemy
+void Enemy::setPosition(int x, int y)
+{
+	_x = x;
+	_y = y;
+}
+
+//Get the position of Enemy using reference variable
+void Enemy::getPosition(int& x, int& y)
+{
+	x = _x;
+	y = _y;
+}
