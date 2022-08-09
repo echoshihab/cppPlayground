@@ -126,11 +126,21 @@ void Level::battleMonster(Player& player, int targetX, int targetY)
 {
 	int enemyX;
 	int enemyY;
+	int attackRoll;
+	int attackResult;
+
 	for (int i = 0; i < _enemies.size(); i++) {
 		_enemies[i].getPosition(enemyX, enemyY);
 
 		if (targetX == enemyX && targetY == enemyY) {
-			//battle
+
+			// Battle
+			attackRoll = player.attack();
+			attackResult = _enemies[i].takeDamage(attackRoll);
+
+			if (attackResult != 0) {
+				player.addExperience(attackResult);
+			}
 
 			return;
 					

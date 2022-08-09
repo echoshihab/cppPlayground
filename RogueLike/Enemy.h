@@ -6,11 +6,16 @@ class Enemy
 public:
 	Enemy(std::string name, char tile, int level, int attack, int defense, int health, int xp);
 
+	int attack();
+	int takeDamage(int attack);
+
 	//setters
 	void setPosition(int x, int y);
 
 	//getters
 	void getPosition(int& x, int& y);
+
+
 
 private:
 	std::string _name;

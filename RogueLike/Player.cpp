@@ -1,4 +1,6 @@
 #include "Player.h"
+#include <random>
+#include <ctime>
 
 //Constructor, initialize position to zero
 
@@ -26,10 +28,35 @@ void Player::setPosition(int x, int y)
 	_y = y;
 }
 
+void Player::addExperience(int experience) 
+{
+	_experience += experience;
+
+	//Level up!
+	while (_experience > 50) {
+		printf("Leveled up!\n");
+		_experience -= 50;
+		_attack += 10;
+		_defense += 10;
+		_health += 10;
+		_level++;
+		system("PAUSE");
+	}
+
+}
+
 //Get the position of player using reference variable
 void Player::getPosition(int& x, int& y)
 {
 	x = _x;
 	y = _y;
+}
+
+int Player::attack()
+{
+	static std::default_random_engine randomEngine(time(NULL));
+	std::uniform_int_distribution<int> attackRoll(0, _attack);
+
+	return attackRoll(randomEngine);
 }
 
