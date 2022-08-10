@@ -52,7 +52,10 @@ int Enemy::takeDamage(int attack)
 }
 
 char Enemy::getMove(int playerX, int playerY) {
-	
+	static std::default_random_engine randomEngine(time(NULL));
+
+	std::uniform_int_distribution<int> moveRoll(0, 6);
+
 	int distance;
 	int dx = _x - playerX;
 	int dy = _y - playerY;
@@ -81,6 +84,19 @@ char Enemy::getMove(int playerX, int playerY) {
 		}
 	}
 
+	int randomMove = moveRoll(randomEngine);
 
+	switch (randomMove) {
+	case 0:
+		return 'a';
+	case 1:
+		return 'w';
+	case 2:
+		return 's';
+	case 3:
+		return 'd';
+	default: 
+		return '.';
+	}
 
 }
