@@ -60,3 +60,17 @@ int Player::attack()
 	return attackRoll(randomEngine);
 }
 
+
+int Player::takeDamage(int attack)
+{
+	attack -= _defense;
+	if (attack > 0) {
+		_health -= attack;
+		//check if he died
+		if (_health <= 0) {
+			return 1;
+		}
+	}
+
+	return 0;
+}

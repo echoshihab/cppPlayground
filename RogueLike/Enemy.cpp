@@ -48,5 +48,5 @@ int Enemy::takeDamage(int attack)
 		}
 	}
 	
-	return 0
+	return 0;
 }

@@ -7,6 +7,7 @@ public:
 
 
 	int attack();
+	int takeDamage(int attack);
 
 	//setters
 	void setPosition(int x, int y);

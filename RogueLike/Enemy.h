@@ -15,6 +15,7 @@ public:
 	//getters
 	void getPosition(int& x, int& y);
 
+	std::string getName() { return _name; }
 
 
 private:
