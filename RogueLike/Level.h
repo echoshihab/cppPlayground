@@ -12,6 +12,7 @@ public:
 	void print();
 
 	void movePlayer(char input, Player &player);
+	void updateEnemies(Player &player);
 
 	//getters
 	char getTile(int x, int y);

@@ -100,6 +100,12 @@ void Level::movePlayer(char input, Player& player) {
 	}
 }
 
+void Level::updateEnemies(Player& player) {
+	for (int i = 0; i < _enemies.size(); i++) {
+
+	}
+}
+
 char Level::getTile(int x, int y) {
 	return _levelData[y][x];
 }

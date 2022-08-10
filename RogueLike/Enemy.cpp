@@ -50,3 +50,37 @@ int Enemy::takeDamage(int attack)
 	
 	return 0;
 }
+
+char Enemy::getMove(int playerX, int playerY) {
+	
+	int distance;
+	int dx = _x - playerX;
+	int dy = _y - playerY;
+	int adx = abs(dx);
+	int ady = abs(dy);
+
+	distance = adx + ady;
+	
+	if (distance < 5) {
+		//moving along x axis
+		if (adx < ady) {
+			if (dx > 0) {
+				return 'a';
+			}
+			else {
+				return 'd';
+			}
+		}
+		else { // moving along Y axis
+			if (dy > 0) {
+				return 'w';
+			}
+			else {
+				return 's';
+			}
+		}
+	}
+
+
+
+}

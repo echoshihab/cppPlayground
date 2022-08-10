@@ -17,6 +17,9 @@ public:
 
 	std::string getName() { return _name; }
 
+	//Gets AI move command
+	char getMove(int playerX, int playerY);
+
 
 private:
 	std::string _name;
